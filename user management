@@ -1,0 +1,75 @@
+🔐 𝗨𝘀𝗲𝗿 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 | 𝗙𝗶𝗹𝗲 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁 | 𝗩𝗶 𝗘𝗱𝗶𝘁𝗼𝗿 𝗦𝗵𝗼𝗿𝘁𝗰𝘂𝘁𝘀 𝗶𝗻 𝗟𝗶𝗻𝘂𝘅 🖥️
+
+Accountability becomes difficult when multiple developers are given root access with a shared password. If someone accidentally deletes a critical folder (like `/sbin`), your Linux server might crash, and you'll have no idea who caused it.
+
+User Management ensures security, isolation, and auditability.
+
+Here’s a quick overview:
+
+👤 𝗨𝘀𝗲𝗿 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁
+
+Create a user: `useradd satya` (used in scripting)
+Check users: `vim /etc/passwd`
+Set a password: `passwd satya`
+Verify password creation: `vim /etc/shadow`
+Delete a user: `userdel satya`
+Create a user with a home directory: `adduser satya`
+List home dirs: `ls /home`
+Confirms active user: whoami
+
+⏳ 𝗣𝗮𝘀𝘀𝘄𝗼𝗿𝗱 𝗣𝗼𝗹𝗶𝗰𝗶𝗲𝘀
+
+Expire password in 90 days: `chage -M 90 username`
+Lock user: `passwd -l username`
+Unlock user: `passwd -u username`
+
+👥 𝗚𝗿𝗼𝘂𝗽𝘀
+
+Create a group: `groupadd devops`
+Check groups: `vim /etc/group`
+Add user to group: `usermod -aG devops satya`
+
+🔐 𝗦𝗦𝗛 𝗖𝗹𝗶𝗲𝗻𝘁 & 𝗔𝗰𝗰𝗲𝘀𝘀
+
+Servers run `sshd` (secure shell daemon)
+Clients use `ssh` to connect
+
+Linux/macOS: `ssh satya@server-ip`
+Windows (Git Bash): `ssh -i devops.pem ubuntu@server-ip`
+Check instance details: `uname -a`
+SSH config file: `/etc/ssh/sshd_config.d/60-cloudimg-settings.conf`
+
+📁 𝗙𝗶𝗹𝗲 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁
+
+ls - lists the files
+cd - change directory
+cd .. - to get back to the previous directory
+pwd - present working directory
+mkdir - creates a directory or folder
+rmdir - deletes the directory
+touch - creates a file
+ls -ltr - shows the details of the directory or file
+rm filename - removes a file
+rm -rf directoryname - deletes the directory
+cp - copy files (eg : cp file1 file2 --> details of the file1 will be reflected the same in file2)
+mv - renames a filename to another name (mv file1 file2)
+vim - will create a file and lets you enter data in it (sudo apt install vim)
+
+📝 𝗩𝗜𝗠 𝗘𝗱𝗶𝘁𝗼𝗿
+Modes in VIM: 
+Normal Mode: Can't write anything
+Insert Mode: Can write content
+Command Mode: Used for saving the data (Press ESC + :wq! saves the content and quits, :q! - won't save the file but can quit it)
+
+𝗖𝗼𝗺𝗺𝗮𝗻𝗱𝘀:
+Esc+0 --> goes to the first line
+Esc+500 --> goes to 500th line
+Esc+Shift+O --> will create a new line
+Esc+U --> will remove the line
+cat file.txt -->prints the content of file
+less file.txt --> Opens the file to be viewed with scrolling support (sudo apt install less)
+tail -20 file.txt --> Displays last 20 lines of the file
+head -10 file.txt --> Displays first 10 lines of the file
+tac file.txt --> Displays content in reverse order (like bottom to top order)
+echo 'Hello' > file.txt --> Prints the message in file.txt but overrides the existing content
+echo 'Hello' >> file.txt --> Prints the message in file.txt without overriding the content
